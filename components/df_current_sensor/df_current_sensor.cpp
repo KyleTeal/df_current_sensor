@@ -1,15 +1,17 @@
-#include "df_current_sensor.h"
+#pragma once
+#include "esphome.h"
 
 namespace esphome {
 namespace df_current_sensor {
 
-void DFCurrentSensor::setup() {
-  ESP_LOGCONFIG("DFCurrentSensor", "Initializing DF Current Sensor...");
-}
+class DFCurrentSensor : public PollingComponent, public i2c::I2CDevice {
+ public:
+  DFCurrentSensor() : PollingComponent(1000) {}
+  Sensor *water_level_sensor = new Sensor();
 
-void DFCurrentSensor::update() {
-  PollingComponent::update();
-}
+  void setup() override;
+  void update() override;
+};
 
 }  // namespace df_current_sensor
 }  // namespace esphome
