@@ -1,5 +1,5 @@
 #pragma once
-#include "esphome/core/automation.h"
+#include "esphome/core/component.h"
 #include "esphome/components/sensor/sensor.h"
 #include "df_current_sensor.h"
 
@@ -8,19 +8,17 @@ namespace df_current_sensor {
 
 class DFCurrentSensorSensor : public sensor::Sensor, public Component {
  public:
+  DFCurrentSensorSensor() = default;
+
   void setup() override {
     this->df_current_sensor_ = new DFCurrentSensor();
     this->df_current_sensor_->set_sensor(this);
     this->df_current_sensor_->setup();
   }
 
-  void loop() override {
-    this->df_current_sensor_->loop();
-  }
+  void loop() override { this->df_current_sensor_->loop(); }
 
-  void update() override {
-    this->df_current_sensor_->update();
-  }
+  void update() override { this->df_current_sensor_->update(); }
 
  private:
   DFCurrentSensor *df_current_sensor_;
