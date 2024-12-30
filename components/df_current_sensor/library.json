@@ -1,0 +1,8 @@
+{
+  "name": "DFCurrentSensor",
+  "version": "1.0.0",
+  "keywords": "esp32, esphome, i2c, sensor",
+  "dependencies": {
+    "esphome/esphome": "*"
+  }
+}
